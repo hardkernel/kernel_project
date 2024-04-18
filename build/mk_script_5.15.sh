@@ -66,6 +66,12 @@ function build_config_to_bzl() {
 		echo "    \"${module}\","		>> ${PROJECT_DIR}/project.bzl
 	done
 	echo "]"					>> ${PROJECT_DIR}/project.bzl
+
+	for variable_value in ${GLOBAL_VARIABLE_VALUE}; do
+		variable_name_tmp=${variable_value%=*}   #extract the GLOBAL_VARIABLE_VALUE name
+		variable_value_tmp=${variable_value#*=}  #extract the GLOBAL_VARIABLE_VALUE value
+		echo "${variable_name_tmp} = \"${variable_value_tmp}\"" >> ${PROJECT_DIR}/project.bzl #export GLOBAL_VARIABLE_VALUE to bazel file
+	done
 }
 
 function build_config_to_build_config() {
