@@ -221,6 +221,18 @@ elif [[ ${fcc_dtb_files_count} != 0 ]]; then
 	${DTBTOOL_DIR}/dtbTool -o ${DEVICE_KERNEL_DIR}/${BOARD_DEVICENAME}_mxl258c.dtb -p ${DTBTOOL_DIR}/ ${OUT_AMLOGIC_DIR}/fcc_dtb/
 fi
 
+soundbar_dtb_files_count=0
+mkdir -p ${OUT_AMLOGIC_DIR}/soundbar
+for dtb_file in ${KERNEL_DEVICETREE_SOUNDBAR}; do
+	cp ${DIST_DIR}/${dtb_file}.dtb ${OUT_AMLOGIC_DIR}/soundbar/
+	soundbar_dtb_files_count=`expr ${soundbar_dtb_files_count} + 1`
+done
+if [[ ${soundbar_dtb_files_count} == 1 ]]; then
+	cp -f ${DIST_DIR}/${KERNEL_DEVICETREE_SOUNDBAR}.dtb ${DEVICE_KERNEL_DIR}/${BOARD_DEVICENAME}_soundbar.dtb
+elif [[ ${soundbar_dtb_files_count} != 0 ]]; then
+	${DTBTOOL_DIR}/dtbTool -o ${DEVICE_KERNEL_DIR}/${BOARD_DEVICENAME}_soundbar.dtb -p ${DTBTOOL_DIR}/ ${OUT_AMLOGIC_DIR}/soundbar/
+fi
+
 rm -f ${KERNEL_BUILD_VAR_FILE}
 echo "========================================================"
 if [[ "${REPLACY_SYSTEM_DLKM_IMG}" == "0" ]]; then
