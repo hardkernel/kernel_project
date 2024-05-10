@@ -69,6 +69,9 @@ if [[ -n ${res} ]]; then
 fi
 
 echo "copy closed source modules"
+if [[ -d ${DEVICE_KERNEL_DIR}/extra_closed_source_modules ]]; then
+	rm -rf ${DEVICE_KERNEL_DIR}/extra_closed_source_modules
+fi
 res=`ls ${OUT_AMLOGIC_DIR}/modules/extra_closed_source_modules`
 if [[ -n ${res} ]]; then
 	cp -rf ${OUT_AMLOGIC_DIR}/modules/extra_closed_source_modules ${DEVICE_KERNEL_DIR}/
