@@ -39,6 +39,6 @@ MODULES_SERVICE_LOAD_LIST="
 MODULES_SEQUENCE_LIST=modules_sequence_list
 
 DEV_CONFIGS="
-	planck_u_common14-5.15_devconfig
+	stb_u_common14-5.15_devconfig
 "
 UPGRADE_PROJECT=u
