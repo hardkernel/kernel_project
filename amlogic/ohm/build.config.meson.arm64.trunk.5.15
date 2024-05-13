@@ -26,7 +26,7 @@ FIRMWARES_COPY_FROM_TO="
 TYPE_MODULE_SELECT_MODULE_ANDROID="
 	amlogic-clk-soc-* 1 amlogic-clk-soc-sc2.ko
 	amlogic-pinctrl-soc-* 1 amlogic-pinctrl-soc-sc2.ko
-	amlogic-snd-codec-* 2 amlogic-snd-codec-dummy.ko amlogic-snd-codec-t9015.ko
+	amlogic-snd-codec-* 3 amlogic-snd-codec-dummy.ko amlogic-snd-codec-t9015.ko amlogic-snd-codec-ad82128.ko
 "
 
 MODULES_OUT_REMOVE="
