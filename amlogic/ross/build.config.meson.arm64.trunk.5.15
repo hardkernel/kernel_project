@@ -52,6 +52,7 @@ EXTRA_GKI_MODULES_LIST="
 MODULES_SEQUENCE_LIST=
 
 DEV_CONFIGS="
+	ross_u_common14-5.15_devconfig
 "
 
 GKI_CONFIG=gki_10
