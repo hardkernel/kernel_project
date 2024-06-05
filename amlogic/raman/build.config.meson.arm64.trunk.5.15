@@ -1,0 +1,58 @@
+KERNEL_DEVICETREE="s6_s905x5_bl201 s6_s905x5_bl209 s6_s905d5_bq201 s6_s905d5_bq209"
+
+GLOBAL_VARIABLE_VALUE="
+	GPU_DRV_VERSION=r44p1
+	GPU_TYPE=vale
+"
+
+EXT_MODULES_ANDROID="
+	//driver_modules/gpu/valhall:gpu
+	//driver_modules/media_modules:media
+	//driver_modules/DTVKit/AFD:afd
+	//driver_modules/wifi_bt/wifi:wlan
+	//driver_modules/wifi_bt/bt:bt
+"
+
+EXT_MODULES_ANDROID_AUTO_LOAD="
+"
+
+KCONFIG_EXT_ANDROID="
+"
+
+FIRMWARES_COPY_FROM_TO="
+	driver_modules/media_modules/firmware:video
+	driver_modules/wifi_bt/wifi/amlogic/w2/common/wifi_w2_fw_pcie.bin:wifi/wifi_w2_fw_pcie.bin
+	driver_modules/wifi_bt/wifi/amlogic/w2/common/wifi_w2_fw_sdio.bin:wifi/wifi_w2_fw_sdio.bin
+	driver_modules/wifi_bt/wifi/amlogic/w2/common/wifi_w2_fw_usb.bin:wifi/wifi_w2_fw_usb.bin
+	driver_modules/wifi_bt/wifi/amlogic/w2/common/aml_wifi_rf.txt:wifi/aml_wifi_rf.txt
+"
+
+TYPE_MODULE_SELECT_MODULE_ANDROID="
+	amlogic-clk-soc-* 1 amlogic-clk-soc-s6.ko
+	amlogic-pinctrl-soc-* 1 amlogic-pinctrl-soc-s6.ko
+	amlogic-snd-codec-* 3 amlogic-snd-codec-dummy.ko amlogic-snd-codec-t9015.ko amlogic-snd-codec-sy6026l.ko
+"
+
+MODULES_OUT_REMOVE="
+"
+
+MODULES_OUT_ADD="
+"
+
+MODULES_LOAD_BLACK_LIST="
+	amlogic_pcie_v2_host.ko
+"
+
+MODULES_SERVICE_LOAD_LIST="
+"
+
+EXTRA_GKI_MODULES_LIST="
+"
+
+MODULES_SEQUENCE_LIST=
+
+DEV_CONFIGS="
+	ross_u_common14-5.15_devconfig
+"
+
+GKI_CONFIG=gki_10
