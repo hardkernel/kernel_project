@@ -56,4 +56,4 @@ DEV_CONFIGS="
 	raman_u_common14-5.15_devconfig
 "
 
-GKI_CONFIG=gki_10
+GKI_CONFIG=gki_20
