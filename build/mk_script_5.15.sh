@@ -9,7 +9,18 @@ function clean() {
 	for common_dir in `ls common*/mk.sh`; do
 		common_dir=`dirname ${common_dir}`
 		echo "clean: ${common_dir}"
-		(cd ${common_dir}; [[ -d bazel-out ]] && tools/bazel clean --async; [[ -d out ]] && rm -rf out; [[ -d out_abi ]] && rm -rf out_abi)
+		(
+			cd ${common_dir};
+			if [[ -d bazel-out ]]; then
+				tools/bazel clean --async;
+			fi
+			if [[ -d out ]]; then
+				rm -rf out;
+			fi
+			if [[ -d out_abi ]]; then
+				rm -rf out_abi;
+			fi
+		)
 	done
 	return
 }
@@ -345,7 +356,6 @@ function usage() {
     5) ./mk ohm -v common14-5.15 --sp xxx	//parameters(xxx) after --sp is used for script ./mk.sh
 
 EOF
-  exit 1
 }
 
 function parser() {
@@ -375,7 +385,7 @@ function parser() {
 	done
 	if [ "$j" == "0" ]; then
 		usage
-		exit
+		exit 1
 	fi
 }
 
@@ -437,7 +447,7 @@ function main() {
 	if [ -z $1 ]
 	then
 		usage
-		return
+		exit 1
 	fi
 
 	export MAIN_FOLDER=$(realpath $(dirname $(readlink $0))/../..)
