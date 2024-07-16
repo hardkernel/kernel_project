@@ -40,6 +40,7 @@ MODULES_OUT_REMOVE="
 
 MODULES_OUT_ADD="
 	common_drivers/drivers/amfc/amlogic-amfc.ko
+	common_drivers/drivers/amfc/aml_erofs/aml-erofs.ko
 "
 
 MODULES_LOAD_BLACK_LIST="
