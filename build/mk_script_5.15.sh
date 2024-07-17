@@ -231,6 +231,7 @@ function build_common_5.15() {
 		EXT_MODULES_ANDROID_AUTO_LOAD=${ext_modules}
 	fi
 
+	copy_dev_configs_files=
 	if [[ -n ${DEV_CONFIGS} ]]; then
 		local dev_configs
 		local copy_dev_configs
@@ -238,6 +239,7 @@ function build_common_5.15() {
 			if [[ -f ${MAIN_FOLDER}/${PROJECT_CONFIG_DIR}/${config} ]]; then
 				if [[ ${BAZEL} == 1 ]]; then
 					cp ${MAIN_FOLDER}/${PROJECT_CONFIG_DIR}/${config} ${common_drivers}/arch/${ARCH}/configs
+					copy_dev_configs_files="${copy_dev_configs_files} ${common_drivers}/arch/${ARCH}/configs/${config}"
 					copy_dev_configs="${copy_dev_configs} ${config}"
 					dev_configs="${dev_configs} ${config}"
 				else
@@ -289,6 +291,7 @@ function build_common_5.15() {
 
 	./project/build/build_kernel_5.15.sh $sub_parameters
 
+	[[ -n ${copy_dev_configs_files} ]] && rm -f ${copy_dev_configs_files}
 	copy_out
 }
 
