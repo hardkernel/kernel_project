@@ -93,7 +93,7 @@ if [[ ${FULL_KERNEL_VERSION} == "common13-5.15" ]]; then
 	if [[ -n ${CONFIG_REPLACE_GKI_IMAGE} ]]; then
 		gki_dir=${KERNEL_REPO}/gki_image
 		cp ${gki_dir}/Image* ${DEVICE_KERNEL_DIR}
-		cp ${gki_dir}/vmlinux ${DEVICE_KERNEL_DIR}/symbols
+		cp ${gki_dir}/vmlinux* ${DEVICE_KERNEL_DIR}/symbols
 		while read gki_module; do
 			gki_module=${gki_module##*/}
 			gki_module_dst=`find ${DEVICE_KERNEL_DIR}/ -name ${gki_module} -not -path "${DEVICE_KERNEL_DIR}/symbols/*"`
@@ -126,7 +126,7 @@ else
 		cp ${gki_dir}/Image* ${DEVICE_KERNEL_DIR}/gki
 		cp ${gki_dir}/boot* ${DEVICE_KERNEL_DIR}/gki
 		cp ${gki_dir}/system_dlkm* ${DEVICE_KERNEL_DIR}/gki
-		cp ${gki_dir}/vmlinux ${DEVICE_KERNEL_DIR}/symbols
+		cp ${gki_dir}/vmlinux* ${DEVICE_KERNEL_DIR}/symbols
 
 		if [[ -f ${DEVICE_KERNEL_DIR}/gki/system_dlkm_staging_archive.tar.gz ]]; then
 			(cd ${DEVICE_KERNEL_DIR}/gki; tar -zxf system_dlkm_staging_archive.tar.gz)
