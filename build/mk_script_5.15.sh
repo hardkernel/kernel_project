@@ -56,10 +56,12 @@ function build_config_to_bzl() {
 	echo "EXT_MODULES_ANDROID = [" 			>> ${PROJECT_DIR}/project.bzl
 	local ext_modules
 	for ext_module in ${EXT_MODULES_ANDROID}; do
-		if [[ "${ext_module:0:2}" == "//" ]]; then
-			echo "    \"${ext_module}\","	>> ${PROJECT_DIR}/project.bzl
-		else
-			echo "    \"//${ext_module}\","	>> ${PROJECT_DIR}/project.bzl
+		if [[ "$ext_module" =~ ":" ]]; then
+			if [[ "${ext_module:0:2}" == "//" ]]; then
+				echo "    \"${ext_module}\","	>> ${PROJECT_DIR}/project.bzl
+			else
+				echo "    \"//${ext_module}\","	>> ${PROJECT_DIR}/project.bzl
+			fi
 		fi
 	done
 	echo "]" 					>> ${PROJECT_DIR}/project.bzl
@@ -216,6 +218,16 @@ function build_common_5.15() {
 		BAZEL=1
 		build_config_to_bzl
 		build_config_to_build_config
+		local ext_modules
+		for ext_module in ${EXT_MODULES_ANDROID}; do
+			if [[ ! "$ext_module" =~ ":" ]]; then
+				if [[ "${ext_module:0:2}" == "//" ]]; then
+					ext_module=${ext_module:2}
+				fi
+				ext_modules="${MAIN_FOLDER}/${KERNEL_REPO}/${ext_module} ${ext_modules}"
+			fi
+		done
+		EXT_MODULES_ANDROID=${ext_modules}
 	fi
 	build_config_to_modules_kconfig
 
