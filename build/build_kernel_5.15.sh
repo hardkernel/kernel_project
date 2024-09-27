@@ -48,7 +48,11 @@ for src_dst in ${FIRMWARES_COPY_FROM_TO}; do
 		mkdir -p ${DEVICE_KERNEL_DIR}/lib/firmware/${dst}
 		cp -a ${MAIN_FOLDER}/${src}/* ${DEVICE_KERNEL_DIR}/lib/firmware/${dst}
 	else
-		dst_dir=`dirname ${DEVICE_KERNEL_DIR}/lib/firmware/${dst}`
+		if [ "${dst: -1}" == "/" ]; then
+			dst_dir=${DEVICE_KERNEL_DIR}/lib/firmware/${dst}
+		else
+			dst_dir=`dirname ${DEVICE_KERNEL_DIR}/lib/firmware/${dst}`
+		fi
 		mkdir -p ${dst_dir}
 		cp -a ${MAIN_FOLDER}/${src} ${DEVICE_KERNEL_DIR}/lib/firmware/${dst}
 	fi
