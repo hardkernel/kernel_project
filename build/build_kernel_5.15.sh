@@ -138,6 +138,12 @@ else
 			echo "There is no ${DEVICE_KERNEL_DIR}/gki/system_dlkm_staging_archive.tar.gz file here, so build break!!!"
 			exit
 		fi
+
+		rm -f ${DEVICE_KERNEL_DIR}/gki/system_dlkm*.img
+		rm -f ${DEVICE_KERNEL_DIR}/gki/boot.img
+		rm -f ${DEVICE_KERNEL_DIR}/gki/Image
+		rm -f ${DEVICE_KERNEL_DIR}/gki/system_dlkm_staging_archive_back.tar.gz
+
 		if [[ -f ${gki_dir}/unstripped_modules.tar.gz ]]; then
 			cp ${gki_dir}/unstripped_modules.tar.gz ${DEVICE_KERNEL_DIR}/symbols
 			(cd ${DEVICE_KERNEL_DIR}/symbols; tar -zxf unstripped_modules.tar.gz)
