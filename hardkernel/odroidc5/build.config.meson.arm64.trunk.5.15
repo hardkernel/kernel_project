@@ -1,0 +1,73 @@
+KERNEL_DEVICETREE="s7d_s905x5m_odroidc5_android"
+
+GLOBAL_VARIABLE_VALUE="
+	GPU_DRV_VERSION=r44p1
+	GPU_TYPE=vale
+"
+
+EXT_MODULES_ANDROID="
+	//driver_modules/gpu/valhall:gpu
+	//driver_modules/media_modules:media
+	//driver_modules/DTVKit/AFD:afd
+	//driver_modules/wifi_bt/wifi:wlan
+	//driver_modules/wifi_bt/bt:bt
+"
+
+EXT_MODULES_ANDROID_AUTO_LOAD="
+"
+
+KCONFIG_EXT_ANDROID="
+"
+
+FIRMWARES_COPY_FROM_TO="
+	driver_modules/media_modules/firmware:video
+	driver_modules/wifi_bt/wifi/amlogic/w2/common/wifi_w2_fw_sdio.bin:wifi/wifi_w2_fw_sdio.bin
+	driver_modules/wifi_bt/wifi/amlogic/w2/common/wifi_w2_fw_usb.bin:wifi/wifi_w2_fw_usb.bin
+	driver_modules/wifi_bt/wifi/amlogic/w2/common/aml_wifi_rf.txt:wifi/aml_wifi_rf.txt
+"
+
+TYPE_MODULE_SELECT_MODULE_ANDROID="
+	amlogic-clk-soc-* 1 amlogic-clk-soc-s7d.ko
+	amlogic-pinctrl-soc-* 1 amlogic-pinctrl-soc-s7d.ko
+	amlogic-snd-codec-* 2 amlogic-snd-codec-dummy.ko amlogic-snd-codec-t9015.ko
+"
+
+MODULES_OUT_REMOVE="
+	common_drivers/sound/soc/codecs/amlogic/amlogic-snd-codec-ad82128.ko
+	common_drivers/sound/soc/codecs/amlogic/amlogic-snd-codec-ad82584f.ko
+	common_drivers/sound/soc/codecs/amlogic/amlogic-snd-codec-pa1.ko
+	common_drivers/sound/soc/codecs/amlogic/amlogic-snd-codec-sy6026l.ko
+	common_drivers/sound/soc/codecs/amlogic/amlogic-snd-codec-tas5707.ko
+	common_drivers/sound/soc/codecs/amlogic/amlogic-snd-codec-tas5805.ko
+"
+
+MODULES_OUT_ADD="
+	common_drivers/drivers/amfc/aml_erofs/aml-erofs.ko
+	common_drivers/drivers/amfc/amlogic-amfc.ko
+	drivers/leds/trigger/ledtrig-activity.ko
+	drivers/leds/trigger/ledtrig-backlight.ko
+	drivers/leds/trigger/ledtrig-default-on.ko
+	drivers/leds/trigger/ledtrig-gpio.ko
+	drivers/leds/trigger/ledtrig-heartbeat.ko
+	drivers/leds/trigger/ledtrig-oneshot.ko
+	drivers/spi/spidev.ko
+"
+
+MODULES_LOAD_BLACK_LIST="
+	amlogic_pcie_v2_host.ko
+"
+
+MODULES_SERVICE_LOAD_LIST="
+"
+
+EXTRA_GKI_MODULES_LIST="
+"
+
+MODULES_SEQUENCE_LIST=
+
+DEV_CONFIGS="
+	ross_u_common14-5.15_devconfig
+	odroidc5.config
+"
+
+GKI_CONFIG=gki_20
