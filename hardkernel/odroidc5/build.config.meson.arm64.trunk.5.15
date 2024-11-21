@@ -51,6 +51,7 @@ MODULES_OUT_ADD="
 	drivers/leds/trigger/ledtrig-heartbeat.ko
 	drivers/leds/trigger/ledtrig-oneshot.ko
 	drivers/spi/spidev.ko
+	drivers/usb/class/cdc-acm.ko
 "
 
 MODULES_LOAD_BLACK_LIST="
