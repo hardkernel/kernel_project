@@ -34,6 +34,18 @@ TYPE_MODULE_SELECT_MODULE_ANDROID="
 
 MODULES_LOAD_BLACK_LIST="
 	amlogic_pcie_v2_host.ko
+	v4l2-async.ko
+	v4l2-fwnode.ko
+	amlogic-seckey.ko
+	amlogic_fs_yaffs.ko
+	amlogic_irblaster.ko
+	amlogic-aoclk-soc-t5w.ko
+	amlogic-aoclk-soc-t5d.ko
+	amlogic-aoclk-soc-txhd2.ko
+	amlogic-pcie.ko
+	amlogic-socinfo.ko
+	amlogic-irblaster.ko
+	amlogic-realtek.ko
 "
 
 MODULES_SERVICE_LOAD_LIST="
