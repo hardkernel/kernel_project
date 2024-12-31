@@ -1,0 +1,62 @@
+KERNEL_DEVICETREE="s6_s905c5_bl215_2g"
+KERNEL_DEVICETREE_SOUNDBAR="s6_s905x5_bl204_soundbar"
+
+GLOBAL_VARIABLE_VALUE="
+	GPU_DRV_VERSION=r44p1
+	GPU_TYPE=vale
+"
+
+EXT_MODULES_ANDROID="
+	//driver_modules/gpu/valhall:gpu
+	//driver_modules/media_modules:media
+	//driver_modules/DTVKit/AFD:afd
+	//driver_modules/wifi_bt/wifi:wlan
+	//driver_modules/wifi_bt/bt:bt
+	//driver_modules/adla/driver:adla
+	//driver_modules/camera/csi_cam/driver:csi_camera
+"
+
+EXT_MODULES_ANDROID_AUTO_LOAD="
+"
+
+KCONFIG_EXT_ANDROID="
+"
+
+WIFI_FW=$(cat driver_modules/wifi_bt/wifi/configs/wifi_fw_list.txt)
+
+FIRMWARES_COPY_FROM_TO="
+	driver_modules/media_modules/firmware:video
+	${WIFI_FW}
+"
+
+TYPE_MODULE_SELECT_MODULE_ANDROID="
+	amlogic-clk-soc-* 1 amlogic-clk-soc-s6.ko
+	amlogic-pinctrl-soc-* 1 amlogic-pinctrl-soc-s6.ko
+	amlogic-snd-codec-* 5 amlogic-snd-codec-dummy.ko amlogic-snd-codec-t9015.ko amlogic-snd-codec-sy6026l.ko amlogic-snd-codec-tas5707.ko amlogic-snd-codec-ad82128.ko
+"
+
+MODULES_OUT_REMOVE="
+"
+
+MODULES_OUT_ADD="
+	common_drivers/drivers/amfc/amlogic-amfc.ko
+	common_drivers/drivers/amfc/aml_erofs/aml-erofs.ko
+"
+
+MODULES_LOAD_BLACK_LIST="
+	amlogic_pcie_v2_host.ko
+"
+
+MODULES_SERVICE_LOAD_LIST="
+"
+
+EXTRA_GKI_MODULES_LIST="
+"
+
+MODULES_SEQUENCE_LIST=
+
+DEV_CONFIGS="
+	raman_u_common14-5.15_devconfig
+"
+
+GKI_CONFIG=gki_20
