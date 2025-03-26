@@ -40,7 +40,11 @@ MODULES_OUT_REMOVE="
 MODULES_OUT_ADD="
 	common_drivers/drivers/amfc/amlogic-amfc.ko
 	common_drivers/drivers/amfc/aml_erofs/aml-erofs.ko
-	common_drivers/drivers/external/st7789v3_tft/st7789v3_tft.ko
+	common_drivers/drivers/external/leds/leds-aw21036.ko
+	common_drivers/drivers/external/nfc/nta533/nta533.ko
+	common_drivers/drivers/external/sensor/htu20d/temp_htu20d.ko
+	common_drivers/drivers/external/sensor/ucs11681/light_ucs11681.ko
+	common_drivers/drivers/external/video/st7789v3_tft/st7789v3_tft.ko
 	common_drivers/sound/soc/codecs/amlogic/amlogic-snd-codec-ntp8918.ko
 "
 
