@@ -159,7 +159,15 @@ function build_common_5.15() {
 		export FULL_KERNEL_VERSION=${CONFIG_KERNEL_VERSION}
 	fi
 	export KERNEL_DIR=common
+
 	export COMMON_DRIVERS_DIR=common_drivers
+
+	if [[ -f ${KERNEL_REPO}/common_drivers/amlogic_utils.sh ]]; then
+		export COMMON_DRIVERS_DIR=../common_drivers
+	else
+		export COMMON_DRIVERS_DIR=common_drivers
+	fi
+
 	export BOARD_DEVICENAME=$1
 	export BOARD_MANUFACTURER=${device_project}
 	export PROJECT_CONFIG_DIR=project/${BOARD_MANUFACTURER}/${BOARD_DEVICENAME}
