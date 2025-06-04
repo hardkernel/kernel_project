@@ -63,6 +63,7 @@ MODULES_OUT_ADD="
 	drivers/w1/masters/w1-gpio.ko
 	drivers/w1/slaves/w1_therm.ko
 	drivers/w1/wire.ko
+	drivers/input/touchscreen/goodix.ko
 "
 
 MODULES_LOAD_BLACK_LIST="
