@@ -243,6 +243,18 @@ elif [[ ${soundbar_dtb_files_count} != 0 ]]; then
 	${DTBTOOL_DIR}/dtbTool -o ${DEVICE_KERNEL_DIR}/${BOARD_DEVICENAME}_soundbar.dtb -p ${DTBTOOL_DIR}/ ${OUT_AMLOGIC_DIR}/soundbar/
 fi
 
+multidisplay_dtb_files_count=0
+mkdir -p ${OUT_AMLOGIC_DIR}/multidisplay
+for dtb_file in ${KERNEL_DEVICETREE_MULTIDISPLAY}; do
+	cp ${DIST_DIR}/${dtb_file}.dtb ${OUT_AMLOGIC_DIR}/multidisplay/
+	multidisplay_dtb_files_count=`expr ${multidisplay_dtb_files_count} + 1`
+done
+if [[ ${multidisplay_dtb_files_count} == 1 ]]; then
+	cp -f ${DIST_DIR}/${KERNEL_DEVICETREE_MULTIDISPLAY}.dtb ${DEVICE_KERNEL_DIR}/${BOARD_DEVICENAME}_multidisplay.dtb
+elif [[ ${multidisplay_dtb_files_count} != 0 ]]; then
+	${DTBTOOL_DIR}/dtbTool -o ${DEVICE_KERNEL_DIR}/${BOARD_DEVICENAME}_multidisplay.dtb -p ${DTBTOOL_DIR}/ ${OUT_AMLOGIC_DIR}/multidisplay/
+fi
+
 rm -f ${KERNEL_BUILD_VAR_FILE}
 echo "========================================================"
 if [[ "${REPLACY_SYSTEM_DLKM_IMG}" == "0" ]]; then
