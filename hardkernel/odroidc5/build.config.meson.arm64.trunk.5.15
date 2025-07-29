@@ -44,11 +44,13 @@ MODULES_OUT_REMOVE="
 MODULES_OUT_ADD="
 	common_drivers/drivers/amfc/aml_erofs/aml-erofs.ko
 	common_drivers/drivers/amfc/amlogic-amfc.ko
+	drivers/gpu/drm/bridge/lt8619c-qc4011.ko
 	drivers/gpu/drm/drm_mipi_dbi.ko
 	drivers/gpu/drm/tiny/ili9341.ko
 	drivers/hwmon/hwmon.ko
 	drivers/hwmon/shtc1.ko
 	drivers/iio/humidity/dht11.ko
+	drivers/input/touchscreen/goodix.ko
 	drivers/leds/trigger/ledtrig-activity.ko
 	drivers/leds/trigger/ledtrig-backlight.ko
 	drivers/leds/trigger/ledtrig-default-on.ko
@@ -63,7 +65,8 @@ MODULES_OUT_ADD="
 	drivers/w1/masters/w1-gpio.ko
 	drivers/w1/slaves/w1_therm.ko
 	drivers/w1/wire.ko
-	drivers/input/touchscreen/goodix.ko
+	drivers/reset/gpio-reset.ko
+	drivers/video/backlight/pwm_bl.ko
 "
 
 MODULES_LOAD_BLACK_LIST="
