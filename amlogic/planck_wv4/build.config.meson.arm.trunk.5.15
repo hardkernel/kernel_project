@@ -19,7 +19,7 @@ EXT_MODULES_ANDROID_AUTO_LOAD="
 KCONFIG_EXT_ANDROID="
 "
 
-BT_FW=$(cat driver_modules/wifi_bt/bt/configs/bt_fw_list.txt)i
+BT_FW=$(cat driver_modules/wifi_bt/bt/configs/bt_fw_list.txt)
 
 FIRMWARES_COPY_FROM_TO="
 	driver_modules/media_modules/firmware:video
